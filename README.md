@@ -21,7 +21,7 @@ $ pip3 install build
 $ python3 -m build
 ```
 
-dist配下に`openconnect_sso-X.X.X-py3-none-any.whl`と`openconnect-sso-0.8.0.tar.gz`が生成されます。
+dist配下に`openconnect_sso-X.X.X-py3-none-any.whl`と`openconnect-sso-X.X.X.tar.gz`が生成されます。
 
 
 

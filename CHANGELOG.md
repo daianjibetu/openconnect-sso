@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.8.1
+
+- Fixed `Yes, trust browser` to be automatically clicked
+
 ## v0.8.0
 
 - Updating dependencies

@@ -89,6 +89,7 @@ def get_default_auto_fill_rules():
             AutoFillRule(selector="input[type=email]", fill="username").as_dict(),
             AutoFillRule(selector="input[type=password]", fill="password").as_dict(),
             AutoFillRule(selector="input[type=submit]", action="click").as_dict(),
+            AutoFillRule(selector="button[id=trust-browser-button]", action="click").as_dict(),
         ]
     }
 
