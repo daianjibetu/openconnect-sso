@@ -113,6 +113,14 @@ class Credentials(ConfigNode):
         except keyring.errors.KeyringError:
             logger.info("Cannot save password to keyring.")
 
+    @password.deleter
+    def password(self):
+        try:
+            return keyring.delete_password(APP_NAME, self.username)
+        except keyring.errors.KeyringError:
+            logger.info("Cannot delete saved password from keyring.")
+            return ""
+
 
 @attr.s
 class Config(ConfigNode):

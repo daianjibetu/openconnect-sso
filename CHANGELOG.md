@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.8.2
+
+- Adding `--reset-password` argument
+
+  `--reset-password` argument allows deleting passwords already stored in the keyring.
+
 ## v0.8.1
 
 - Fixed `Yes, trust browser` to be automatically clicked

@@ -34,6 +34,16 @@ $ pip3 install openconnect_sso-X.X.X-py3-none-any.whl
 ```
 
 
+
+### Update
+
+dist配下で以下を実行します。
+
+```shell
+$ pip3 install -U openconnect_sso-X.X.X-py3-none-any.whl
+```
+
+
 ### Usage
 
 [vlaci/openconnect-sso](https://github.com/vlaci/openconnect-sso)を参考にしてください。

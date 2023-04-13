@@ -15,6 +15,44 @@ def create_argparser():
         prog="openconnect-sso", description=openconnect_sso.__description__
     )
 
+    parser.add_argument(
+        "--browser-display-mode",
+        help="Controls how the browser window is displayed. 'hidden' mode only works with saved credentials. Choices: {%(choices)s}",
+        choices=["shown", "hidden"],
+        metavar="DISPLAY-MODE",
+        nargs="?",
+        default="shown",
+    )
+
+    parser.add_argument(
+        "--on-disconnect",
+        help="Command to run when disconnecting from VPN server",
+        default="",
+    )
+
+    parser.add_argument(
+        "-V",
+        "--version",
+        action="version",
+        version=f"%(prog)s {__version__}"
+    )
+
+    parser.add_argument(
+        "-l",
+        "--log-level",
+        help="",
+        type=LogLevel.parse,
+        choices=LogLevel.choices(),
+        default=LogLevel.INFO,
+    )
+
+    parser.add_argument(
+        "openconnect_args",
+        help="Arguments passed to openconnect",
+        action=StoreOpenConnectArgs,
+        nargs=argparse.REMAINDER,
+    )
+
     server_settings = parser.add_argument_group("Server connection")
     server_settings.add_argument(
         "-p",
@@ -70,44 +108,19 @@ def create_argparser():
         default=False,
     )
 
-    parser.add_argument(
-        "--browser-display-mode",
-        help="Controls how the browser window is displayed. 'hidden' mode only works with saved credentials. Choices: {%(choices)s}",
-        choices=["shown", "hidden"],
-        metavar="DISPLAY-MODE",
-        nargs="?",
-        default="shown",
-    )
-
-    parser.add_argument(
-        "--on-disconnect",
-        help="Command to run when disconnecting from VPN server",
-        default="",
-    )
-
-    parser.add_argument(
-        "-V", "--version", action="version", version=f"%(prog)s {__version__}"
-    )
-
-    parser.add_argument(
-        "-l",
-        "--log-level",
-        help="",
-        type=LogLevel.parse,
-        choices=LogLevel.choices(),
-        default=LogLevel.INFO,
-    )
-
-    parser.add_argument(
-        "openconnect_args",
-        help="Arguments passed to openconnect",
-        action=StoreOpenConnectArgs,
-        nargs=argparse.REMAINDER,
-    )
-
     credentials_group = parser.add_argument_group("Credentials for automatic login")
     credentials_group.add_argument(
-        "-u", "--user", help="Authenticate as the given user", default=None
+        "-u",
+        "--user",
+        help="Authenticate as the given user",
+        default=None
+    )
+
+    credentials_group.add_argument(
+        "--reset-password",
+        help="Delete saved password from keyring.",
+        action="store_true",
+        default=False
     )
     return parser
 
